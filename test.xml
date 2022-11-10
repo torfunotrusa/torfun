@@ -1,0 +1,1119 @@
+<?xml version="1.0"?>
+<form string="Product" delete="0">
+  <header position="inside"> <!-- Button -->
+      <!--button name="240" string="Update Qty On Hand" type="action" invisible="1" attrs="{'invisible': [('type', '!=', 'product')]}"/-->
+      <button name="792" string="Refresh" type="action" class="btn-primary" groups="base.group_system,__export__.res_groups_160_986a5939,__export__.res_groups_161_fe7d0abc"/>
+      <button name="804" string="Print Product Info" type="action" class="btn-success"/>
+      <button name="1839" string="CREATE SO" type="action" class="btn btn-info" groups="base.group_system,__export__.res_groups_158_6c7f403d"/>
+      <button name="1933" string="CREATE PO" type="action" class="btn btn-info" groups="base.group_system,__export__.res_groups_159_16d419bc"/>
+  </header>
+  <span attrs="{'invisible': ['|',('x_avalara_synced', '!=', False),('create_date','=',False)]}">
+      <div>
+        <center style="background-color: #F39C12; color:black; font-weight:bolder; font-size:20px; padding-top:5px; padding-bottom:5px;">
+          PLEASE CONTACT ADMINISTRATOR TO SPECIFY THE PRODUCT TAX CODE!
+        </center>
+      </div>
+  </span>
+  <sheet>
+    <span> <!-- Invisible Necessary Field -->
+        <field name="product_variant_count" invisible="1"/>
+        <field name="is_product_variant" invisible="1"/>
+        <field name="id" invisible="1"/>
+        <field name="currency_id" invisible="1"/>
+        <field name="tracking" invisible="1"/>
+    </span>
+
+    <div class="oe_button_box" name="button_box" style="text-align:left;"> <!-- Bookmark -->
+
+        <button type="object" style="width: 15%;" name="action_open_quants" attrs="{'invisible':[('type', '!=', 'product')]}" class="oe_stat_button" icon="fa-building-o">
+          <div class="o_field_widget o_stat_info" widget="statinf">
+            <div><field name="qty_available" widget="statinfo" string="Stock"/></div>
+            <div><field name="x_reserved_quant" widget="statinfo" string="Reserved"/></div>
+          </div>
+        </button>
+
+        <button name="1826" string="Product Moves"  type="action" class="oe_stat_button" icon="fa-arrows-v" />
+
+        <button name="2065" string="Cost History" style="border-right:1px solid lightgray;"  type="action" class="oe_stat_button" icon="fa-history" />
+
+        <span>
+
+
+
+
+
+
+        <button class="oe_stat_button" style="width: 10%;" type="action" name="1081" icon="fa-usd" groups="base.group_system,__export__.res_groups_158_6c7f403d,__export__.res_groups_157_b95a66cb,__export__.res_groups_159_16d419bc">
+          <div class="o_field_widget o_stat_info" widget="statinf">
+            <div><field string="SO" name="x_sales_count" widget="statinfo"/></div>
+            <div><field string="QU" name="x_quotation_count" widget="statinfo"/></div>
+          </div>
+        </button>
+        </span>
+        <span>
+        <a class="btn dropdown-toggle" style="font-size: 20px;border-right:1px solid lightgray;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" groups="base.group_system,__export__.res_groups_158_6c7f403d,__export__.res_groups_157_b95a66cb,__export__.res_groups_159_16d419bc"/>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button class="oe_stat_button dropdown-item">
+                  <button class="oe_stat_button" name="1198" type="action" icon="fa-usd">
+                      <div class="o_field_widget o_stat_info" widget="statinf">
+                          <div><field string="Unit SO" name="x_unit_sales" widget="statinfo"/></div>
+                          <div><field string="Unit QU" name="x_unit_quotation" widget="statinfo"/></div>
+                      </div>
+                  </button>
+              </button>
+        </div>
+        </span>
+
+        <span>
+        <button class="oe_stat_button" style="width: 10%;" name="1090" type="action" icon="fa-shopping-cart" groups="base.group_system,__export__.res_groups_158_6c7f403d,__export__.res_groups_157_b95a66cb,__export__.res_groups_159_16d419bc">
+          <div class="o_field_widget o_stat_info" widget="statinf">
+            <div><field string="PO" name="x_purchase_count" widget="statinfo"/></div>
+            <div><field string="RFQ" name="x_rfq_count" widget="statinfo"/></div>
+          </div>
+        </button>
+        <a class="btn dropdown-toggle" style="font-size: 20px;" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" groups="base.group_system,__export__.res_groups_158_6c7f403d,__export__.res_groups_157_b95a66cb,__export__.res_groups_159_16d419bc"/>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <button class="oe_stat_button dropdown-item">
+                <button class="oe_stat_button" name="1810" type="action" icon="fa-shopping-cart">
+                    <div class="o_field_widget o_stat_info" widget="statinf">
+                        <div><field string="Unit PO" name="x_unit_po" widget="statinfo"/></div>
+                        <div><field string="Unit RFQ" name="x_unit_rfq" widget="statinfo"/></div>
+                    </div>
+                </button>
+              </button>
+        </div>
+        </span>
+
+        <button class="oe_stat_button" name="1784" type="action" icon="fa-truck" style="width: 20%;">
+          <div class="o_field_widget o_stat_info" widget="statinf">
+            <div><field string="Ongoing Delivery" name="x_ongoingDelivery_count" widget="statinfo"/></div>
+            <div><field string="Done Delivery" name="x_doneDelivery_count" widget="statinfo"/></div>
+          </div>
+        </button>
+
+        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" groups="base.group_system,__export__.res_groups_161_fe7d0abc">
+            <field name="active" widget="boolean_toggle" style="text-align:right;" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+        </button>
+
+        <span invisible="1"> <!-- Invisible Bookmark -->
+            <!--button type="action" name="231" attrs="{'invisible':[('type', '!=', 'product')]}" class="oe_stat_button" icon="fa-building-o">
+                <div class="o_field_widget o_stat_info">
+                    <span class="o_stat_value"><field name="virtual_available" widget="statinfo" nolabel="1"/>
+                        <span attrs="{'invisible':[('outgoing_qty', '=', 0),('incoming_qty','=',0)]}" groups="base.group_no_one">
+                            (-<field name="outgoing_qty" widget="statinfo" nolabel="1"/>+<field name="incoming_qty" widget="statinfo" nolabel="1"/>)
+                        </span>
+                    </span>
+                    <span class="o_stat_text">Forecasted</span>
+                </div>
+            </button-->
+
+            <button type="object" name="action_view_orderpoints" attrs="{'invisible':['|',('type', '!=', 'product'),('nbr_reordering_rules', '==', 1)]}" class="oe_stat_button" icon="fa-refresh">
+                <field name="nbr_reordering_rules" widget="statinfo"/>
+             </button>
+
+            <button type="object" name="action_view_orderpoints" attrs="{'invisible':['|',('type', '!=', 'product'),('nbr_reordering_rules', '!=', 1)]}" class="oe_stat_button" icon="fa-refresh">
+                <div class="o_field_widget o_stat_info mr4">
+                    <span class="o_stat_text">Min:</span>
+                    <span class="o_stat_text">Max:</span>
+                </div>
+                <div class="o_field_widget o_stat_info">
+                    <span class="o_stat_value"><field name="reordering_min_qty"/></span>
+                    <span class="o_stat_value"><field name="reordering_max_qty"/></span>
+                </div>
+            </button>
+
+            <!--button string="Routes" type="object" name="action_view_routes" attrs="{'invisible':[('type', '!=', 'product')]}" class="oe_stat_button" icon="fa-cogs" groups="base.group_no_one"/-->
+
+            <button string="Lot/Serial Number" type="object" name="action_open_product_lot" attrs="{'invisible': [('tracking', '=', 'none')]}" class="oe_stat_button" icon="fa-bars" groups="stock.group_production_lot"/>
+
+            <button name="114" type="action" icon="fa-sitemap" class="oe_stat_button" attrs="{'invisible': [('product_variant_count', '&lt;=', 1)]}" groups="product.group_product_variant">
+                <field string="Variants" name="product_variant_count" widget="statinfo"/>
+            </button>
+
+        </span>
+
+    </div>
+    <div class="row" style="margin:0px;padding:0px;"> <!--Product Name & Internal Reference-->
+        <div class="col-9" style="margin:0px; padding:0px;">
+          <div class = "row" style="margin:0px; padding:0px;">
+              <label for="name" string="Product Name" style="text-align: center; font-size: 14px;"/>
+          </div>
+          <div class = "row" style="margin:0px;">
+            <field name="name" style="font-size: 28px; color:#000000;"/>
+          </div>
+          <div class = "row oe_edit_only" style="margin:0px; padding:0px;">
+              <label for="x_name" string="Generated Product Name" style="text-align: center; font-size: 14px;" attrs="{'invisible': ['|',('x_name_confirm','=','True'),('x_name_generate', '=', False)]}"/>
+          </div>
+          <div class = "row oe_edit_only" style="margin:0px; border-bottom:2px solid black;" attrs="{'invisible': ['|',('x_name_confirm','=','True'),('x_name_generate', '=', False)]}">
+            <field name="x_name" style="font-size: 28px; color:#000000;" attrs="{'invisible': ['|',('x_name_confirm','=','True'),('x_name_generate', '=', False)]}"/>
+            <field name ="x_name_confirm" invisible ="1"/>
+            <field name ="x_name_generate" invisible ="1"/>
+          </div>
+          <div class="row" style="margin:0px;padding:0px;">
+              <div class="col-12" style="margin:0px; padding:0px;"> <!-- Product Category -->
+                  <label for="name" string="Category" style="font-size: 14px;"/>
+                  <field class="o_row" name="categ_id" style="margin-bottom:10px; font-size: 14px;"/>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-3" style="margin:0px; padding:0px; background-color:#F5A91C; text-align: center;">
+
+            <label for="name" string="Internal Reference" style="color:black;  margin-top: 10px;"/>
+            <br/>
+            <field name="default_code" style="color:black; font-size: 35px;font-weight: bold; margin-bottom: 10px;"/>
+        </div>
+    </div>
+
+
+
+    <div class="row" style="margin:0px;padding:0px;"> <!-- Zone 1 -->
+      <div class="col-7" style="margin:0px;padding:0px;"> <!-- Zone 1 Left -->
+          <div class="row" style="margin:0px;padding:0px;"> <!-- Margin -->
+              <div class="col-7" style="margin-bottom:1px;padding:0px;">
+                <button name="1778" string="Generate Product Name" type="action" style="margin-left:0px; padding:2px;" class="btn-outline-info oe_edit_only" attrs="{'invisible': [('x_name_generate', '=', True)]}"/>
+                <button name="1780" string="Confirm Product Name" type="action" style="margin-right:5px; padding:2px;" class="btn-outline-success oe_edit_only" attrs="{'invisible': [('x_name_generate', '=', False)]}"/>
+                <button name="1779" string="Cancel Generated Product Name" type="action" style="margin-left:0px; padding:2px;" class="btn-outline-info oe_edit_only" attrs="{'invisible': [('x_name_generate', '=', False)]}"/>
+              </div>
+
+
+              <!-- New Margin WIP
+              <div class="col-2 text-center align-self-center" style="margin:0px;padding:12px;height:100%;background-color:#ADADAD; font-size: 12px; font-weight: bold;">
+                  MARGIN %
+                  <button string="margin cal" type="action" name="1823"/>
+              </div>
+              <div class="col-2 text-center align-self-center" style="margin:0px;padding:12px;height:100%;font-size: 12px; font-weight: bold;border:1px solid #ADADAD;">
+                  <field name="x_margin_percentage" widget="percentage"/>
+              </div>
+              <div class="col-2 text-center align-self-center" style="margin:0px;padding:12px;height:100%;background-color:#ADADAD; font-size: 12px; font-weight: bold;">
+                  <span>MARGIN $</span>
+              </div>
+              <div class="col-2 text-center align-self-center" style="margin:0px;padding:12px;height:100%;font-size: 12px; font-weight: bold;border:1px solid #ADADAD;">
+                  <field name="x_margin" widget="monetary"/>
+              </div>
+            -->
+
+
+
+
+              <div class="col-5 text-right" style="margin:0px;padding:0px;">
+                  <strong>Margin: </strong>
+                  <field name="x_margin_percentage" options="{'always_reload': True}"/>
+                  % /
+                  <field name="x_margin" widget='monetary' options="{'always_reload': True}"/>
+                  <br/>
+                  <strong invisible="1">Margin [%]: </strong>
+                  <field name="x_margin_current" invisible="1"/>
+              </div>
+
+          </div>
+          <div class="row" style="margin:0px;margin-top:10px;padding:0px;font-size: 25px; font-weight: bold;"> <!-- Main Cost and Price -->
+              <div class="col-2 text-center" style="background-color:#ADADAD; padding:12px;height:60px;">
+                  <span>COST</span>
+              </div>
+              <div class="col-4 text-center" style="border:1px solid #ADADAD; padding:12px;height:60px;">
+                  <field name="standard_price" readonly="1" widget="monetary" force_save="1"/>
+              </div>
+              <div class="col-2 text-center" style="background-color:black;color:white;padding:12px;height:60px; ">
+                  PRICE
+              </div>
+              <div class="col-4 text-center" style="border:1px solid black; padding:12px;height:60px;">
+                  <field name="list_price" widget="monetary"/>
+              </div>
+          </div>
+          <div class="row" style="margin:0px;margin-top:0px;padding:0px;font-size: 12px; font-weight: bold;">
+              <div class="col-2 text-center" style="padding:12px;height:70px;"> <!-- Placeholders -->
+              </div>
+              <div class="col-4 text-center" style="padding:12px;height:70px;"> <!-- Placeholders -->
+                 <span style="color:Gray;">*Estimated Shipping not included in Price</span>
+              </div>
+
+              <div class="col-3 text-center text-warning" style="background-color:black;padding:12px;height:70px; "> <!-- Estimate Shipping Cost to Customer -->
+                  <span>Estimated Shipping Cost <br/>to Customer</span>
+              </div>
+              <div class="col-3 text-center" style="border:1px solid black; border-top:0px;padding:12px;height:70px;">
+                  <field name="x_fba_ship_out_cost" widget="monetary"/>
+                  <br/>
+              </div>
+          </div>
+
+
+          <div class="row" style="margin:0px;margin-top:10px;padding:0px;font-size: 12px; font-weight: bold;"> <!-- Sale price and sale From -->
+              <div class="col-2 text-center" style="background-color:black;color:white; padding:12px;height:50px;">
+                  WEB <br/> SALE FROM
+              </div>
+              <div class="col-4 text-center" style="border:1px solid black; padding:12px;height:50px;">
+                  <field name="x_web_sale_date_from"/>
+              </div>
+              <div class="col-2 text-center bg-warning" style="border-top: 1px solid black; padding:12px;height:50px; ">
+                  TAD PRICE
+              </div>
+              <div class="col-4 text-center" style="border:1px solid black; border-bottom: 0px;padding:12px;height:50px;">
+                  <field name="x_tad_sale_price" widget="monetary"/>
+              </div>
+          </div>
+          <div class="row" style="margin:0px;margin-top:0px;padding:0px;font-size: 12px; font-weight: bold;"> <!-- Sale to -->
+              <div class="col-2 text-center" style="background-color:black;color:white;padding:12px;height:50px; ">
+                  WEB <br/> SALE TO
+              </div>
+              <div class="col-4 text-center" style="border:1px solid black;border-top:0px; padding:12px;height:50px;">
+                  <field name="x_web_sale_date_to"/>
+              </div>
+              <div class="col-2 text-center" style="border-top:1px solid black;background-color:black;color:white;padding:12px;height:50px; ">
+                  WEB <br/> SALE PRICE
+              </div>
+              <div class="col-4 text-center" style="border:1px solid black; padding:12px;height:50px;">
+                  <field name="x_web_sale_price" widget="monetary"/>
+              </div>
+          </div>
+
+
+          <div class="row" style="margin:0px;margin-top:10px;padding:10px;border:1px solid black;"> <!-- Cost Input -->
+              <div class="row" style="margin:0px;padding:0px;width:100%;"> <!-- Raw Unit Cost -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_raw_unit_cost" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;">
+                      <field name="x_raw_unit_cost" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;">
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;font-size: 12px;">
+                      +
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;"> <!-- Duty -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_duty_cost" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;">
+                      <field name="x_duty_cost" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;">
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;font-size: 12px;">
+                      +
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;"> <!-- Delivery Cost -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_purchasing_delivery_cost" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;">
+                      <field name="x_purchasing_delivery_cost" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;">
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;font-size: 12px;">
+                      +
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;"> <!-- Special Tax -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_special_tax" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;">
+                      <field name="x_special_tax" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col-3" style="margin:0px;padding:0px;padding-left:10px;">
+                      <label for="x_special_tax_remark" style="font-size: 12px;font-weight:bold;"/>
+                      <label for="x_special_tax_percentage" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-4" style="margin:0px;padding:0px;">
+                      <field name="x_special_tax_remark"/>
+                      <br/>
+                      <field name="x_special_tax_percentage"/>
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;"> <!-- Plus -->
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;font-size: 12px;">
+                      +
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;border-bottom:solid 1px lightgray;"> <!-- x_other_ddp_cost -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_other_ddp_cost" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;">
+                      <field name="x_other_ddp_cost" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col-3" style="margin:0px;padding:0px;padding-left:10px;">
+                      <label for="x_other_ddp_cost_remark" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-4" style="margin:0px;padding:0px;">
+                      <field name="x_other_ddp_cost_remark"/>
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;padding-top:10px;font-size: 12px;">
+                      =
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;padding-top:10px;padding-bottom:10px;border-bottom:solid 1px lightgray;width:100%;"> <!-- DDP -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_ddp" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;background:lightgray;text-align:center;">
+                      <field name="x_ddp" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;padding-left:10px;font-size: 12px;color:#ADADAD;">
+                      (Delivered Duty Paid)
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;font-size: 12px;">
+                      +
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;border-bottom:solid 1px lightgray;border-bottom:solid 1px lightgray;width:100%;"> <!-- FET -->
+                  <div class="col-3 align-self-center" style="margin:0px;padding:0px;padding-right:10px;">
+                      <label for="x_fet_amount" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2 align-self-center" style="margin:0px;padding:0px;">
+                      <field name="x_fet_amount" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;padding-left:10px;">
+                      <div class="row" style="margin:0px;padding:0px;">
+                          <div class="col-5" style="margin:0px;padding:0px;">
+                              <label for="x_fet_display" string="Estimated FET" style="font-size: 12px;font-weight:bold;"/>
+                          </div>
+                          <div class="col" style="margin:0px;padding:0px;">
+                              <field name="x_fet_display"/>
+                          </div>
+                      </div>
+                      <div class="row" style="margin:0px;padding:0px;">
+                          <div class="col-5" style="margin:0px;padding:0px;">
+                              <label for="x_included_fet" string="FET included in Price" style="font-size: 12px;font-weight:bold;"/>
+                          </div>
+                          <div class="col" style="margin:0px;padding:0px;">
+                              <field name="x_included_fet"/>
+                          </div>
+                      </div>
+                      <div class="row" style="margin:0px;padding:0px;">
+                          <div class="col-5" style="margin:0px;padding:0px;">
+                              <label for="x_fet_class" style="font-size: 12px;font-weight:bold;"/>
+                          </div>
+                          <div class="col" style="margin:0px;padding:0px;">
+                              <field name="x_fet_class"/>
+                          </div>
+                      </div>
+                      <div class="row" style="margin:0px;padding:0px;">
+                          <div class="col-5" style="margin:0px;padding:0px;">
+                              <label for="x_fet_payer"  style="font-size: 12px;font-weight:bold;"/>
+                          </div>
+                          <div class="col" style="margin:0px;padding:0px;">
+                              <field name="x_fet_payer" options="{'no_create': True}"/>
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;font-size: 12px;">
+                      =
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;padding-top:10px;padding-bottom:10px;border-bottom:solid 1px lightgray;width:100%;"> <!-- Base Cost -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_base_cost" string="DDP + FET" style="font-size: 12px;font-weight:bold;" attrs="{'invisible': [('x_included_fet', '=', False)]}"/>
+                      <label for="x_base_cost" string="DDP ONLY" style="font-size: 12px;font-weight:bold;" attrs="{'invisible': [('x_included_fet', '=', True)]}"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;background:lightgray;text-align:center;">
+                      <field name="x_base_cost" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;padding-left:10px;font-size: 12px;color:#ADADAD;">
+                      (Base Cost)
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;padding-top:10px;font-size: 12px;">
+                      +
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;border-bottom:solid 1px lightgray;width:100%;"> <!-- Othher Added Cost -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:30px;">
+                      <label for="x_other_added_cost" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;">
+                      <field name="x_other_added_cost" style="font-size: 12px;" widget="monetary"/>
+                  </div>
+                  <div class="col-3" style="margin:0px;padding:0px;padding-left:10px;">
+                      <label for="x_other_added_cost_remark" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;">
+                      <field name="x_other_added_cost_remark"/>
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;width:100%;">
+                  <div class="col-3" style="margin:0px;padding:0px;font-size: 12px;">
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;font-size: 12px;">
+                      =
+                  </div>
+              </div>
+              <div class="row" style="margin:0px;padding:0px;padding-top:10px;width:100%;"> <!-- x_auto_calculated_cost -->
+                  <div class="col-3" style="margin:0px;padding:0px;padding-right:10px;">
+                      <label for="x_auto_calculated_cost" style="font-size: 12px;font-weight:bold;"/>
+                  </div>
+                  <div class="col-2" style="margin:0px;padding:0px;background:lightgray;text-align:center;">
+                      <field name="x_auto_calculated_cost" style="font-size: 12px;" readonly="1" widget="monetary"/>
+                  </div>
+                  <div class="col" style="margin:0px;padding:0px;padding-left:10px;font-size: 12px;color:#ADADAD;">
+                      (Auto Calculated Cost)
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-5" style="margin:0px;padding:0px;"> <!-- Zone 1 Right -->
+          <field name="image_1920" widget="image" style="margin-left:5px;max-width:100%; height:auto;"/>
+          <div class="row" style="margin:0px;margin-top:10px;padding:10px;">
+            <div class="row" style="margin:0px;padding:0px;width:100%;"> <!-- Raw Unit Cost -->
+                <div class="col-5 text-nowrap" style="margin:0px;padding:0px;padding-right:30px;">
+                    <label for="x_na_commission" style="font-size: 12px;font-weight:bold;"/>
+                </div>
+                <div class="col-7 text-right" style="margin:0px;padding:0px;">
+                    <field name="x_na_commission" style="font-size: 12px;" widget="monetary"/>
+                </div>
+            </div>
+          </div>
+          <div class="row" style="margin:0px;margin-top:10px;padding:10px;">
+              <div class="col-12 text-center" style="font-size: 15px; font-weight: bold; background-color:#EEEDEE;"><i>--- QUICK SPECS ---</i></div>
+              <group class="col-12" style="margin-left:5px;">
+                  <field name="x_part_number" readonly="1"/>
+                  <field name="x_od" string="OD (in)" readonly="1" attrs="{'invisible': [('x_ship_by','!=','tire')]}"/>
+                  <field name="x_ow" string="OW (in)" readonly="1" attrs="{'invisible': [('x_ship_by','!=','tire')]}"/>
+                  <field name="x_box_length" readonly="1" attrs="{'invisible': [('x_ship_by','!=','box')]}"/>
+                  <field name="x_box_width" readonly="1" attrs="{'invisible': [('x_ship_by','!=','box')]}"/>
+                  <field name="x_box_height" readonly="1" attrs="{'invisible': [('x_ship_by','!=','box')]}"/>
+                  <field name="x_crate_l" readonly="1" attrs="{'invisible': [('x_ship_by','!=','crate')]}"/>
+                  <field name="x_crate_w" readonly="1" attrs="{'invisible': [('x_ship_by','!=','crate')]}"/>
+                  <field name="x_crate_h" readonly="1" attrs="{'invisible': [('x_ship_by','!=','crate')]}"/>
+                  <field name="x_weight" string="Weight (lbs)" readonly="1"/>
+              </group>
+          </div>
+
+          <div class="row" style="margin:0px;padding:10px;">
+            <div class="col-12" style="margin:0px;padding:0px;max-width:100%;">
+              <div class="col-12" style="margin:0px;padding:0px;font-size: 15px; font-weight: bold; padding-left: 5px; height:25px; background-color:#EEEDEE;">INVENTORY</div>
+              <field class="col-12" name="x_stock_quant" mode="tree" open="false" style="margin:0px;padding:0px;font-size: 12px;border:1px solid black;overflow-x: scroll;">
+                  <!-- <tree> -->
+                    <tree string="Inventory Valuation" default_order="x_location_id_usage aesc, x_quantity_minus_reserve desc"  create="0" delete="0"
+                            decoration-success="x_quantity_minus_reserve >= 10"
+                            decoration-warning="(10 > x_quantity_minus_reserve and x_quantity_minus_reserve >= 1)"
+                            decoration-danger="0 > x_quantity_minus_reserve"
+                    >
+                      <field name="x_warehouse_name" class="text-wrap"/>
+                      <field name="quantity" string="On Hand" sum="Total Qty On Hand"/>
+                      <field name="reserved_quantity" string="Reserved" sum="Total Reserved"/>
+                      <field name="x_sb_quantity" string= "SB Qty" sum="Total Quantity" invisible="1"/>
+                      <field name="product_uom_id" invisible="1"/>
+                      <field name="x_location_id_usage" invisible="1"/>
+                      <field name="x_quantity_minus_reserve" string="Available" sum="Total Available"/>
+                  </tree>
+              </field>
+              <div class="col-12 text-center" style="margin:0px;padding:0px;">
+                <button name="1935" string="AUTO-RESERVE" type="action" class="btn btn-info" style="width:100%;"/>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+    <div class="row" style="margin:0px;margin-top:10px;padding:0px;"> <!-- Zone 1 -->
+      <div class="col-12" style="margin:0px;padding:0px;">
+                <div class="col-12" style="font-size: 15px; font-weight: bold; padding-left: 5px; height:25px; background-color:#EEEDEE;">VENDOR</div>
+                <field name="seller_ids" mode="tree" style="border:1px solid black;overflow-x: scroll;"
+                  context="{'default_product_tmpl_id':context.get('product_tmpl_id',active_id), 'product_template_invisible_variant': True}"
+                  attrs="{'invisible': [('product_variant_count','&gt;',1)]}"
+                  nolabel="1">
+                    <tree string="Vendor List" limit="5" default_order="sequence" options="{'no_open': True}"
+                            decoration-success="x_stock_qty >= 10"
+                            decoration-warning="(10 > x_stock_qty and x_stock_qty >= 1)"
+                            decoration-danger="0 > x_stock_qty"
+                    >
+                      <field name="product_uom" invisible="1"/>
+                      <field name="currency_id" invisible="1"/>
+                      <field name="__last_update" string="Last Modified" widget="date" invisible="1"/>
+                      <field name="x_last_stock_updated" string="Stock Updated" widget="date"/>
+                      <field name="x_last_price_updated" string="Cost Updated" widget="date"/>
+                      <field name="sequence" invisible="1"/>
+                      <field name="name" class="text-wrap" style="width: 140px;"/>
+                      <field name="x_warehouse" class="text-wrap" style="width: 80px;" string="Warehouse"/>
+                      <field name="x_city_zip" optional="hide"/>
+                      <field name="x_state" optional="hide"/>
+                      <field name="x_country" class="text-wrap" style="width: 80px;"/>
+                      <field name="min_qty" string="Minimum Order Qty(s)" invisible="1"/>
+                      <field name="x_stock_qty" string="Stock Qty(s)" invisible="1"/>
+                      <field name="x_vendor_stock_percent" string="Stock Percentage [%]" invisible="1"/>
+                      <field name="x_stock_qty" string="Stock" style="width: 60px;" invisible="0"/>
+                      <field name="price" string="Cost" style="width: 70px;" widget="monetary"/>
+                    </tree>
+                </field>
+      </div>
+    </div>
+
+    <notebook style="padding-top:10px;"> <!-- Zone 3 -->
+        <page string="Product Information" name="product_information"> <!-- Product Information & Vendor -->
+            <div class="row">
+                <div class="col-7"> <!-- Product Information -->
+                    <div style="border: 1px dotted #ADADAD;padding-left:15px;">
+                        <!--Necessary Info Start-->
+                        <div>
+                            <group class="col-6">
+                                <field name="x_brand" options="{'no_create': True}"/>
+                                <br class="oe_edit_only"/>
+                                <button name="2433" style="width:100%;" type="action" class="btn-info oe_edit_only" string="BRAND" icon="fa-plus-circle" groups="base.group_system,__export__.res_groups_160_986a5939,__export__.res_groups_161_fe7d0abc"/>
+                                <field name="x_model" widget="text"/>
+                                <field name="x_manufacturer"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_part_number" style="max-width:75px;word-wrap: break-word;"/>
+                                <field name="x_weight"/>
+                                <br/>
+                                <field name="tax_code_id" string="Product Tax Code [Specific]"/>
+                                <field name="applicable_tax_code_id" string="Tax Code"/>
+                            </group>
+                        </div>
+                        <!--Necessary Info End-->
+                        <!--Partially Necessary Info - 1 Start-->
+                        <div attrs="{'invisible': ['|',('categ_id','=',16),('categ_id','=',17)]}">
+                            <group>
+                                <field name="x_size"/>
+                                <field name="x_bias_radial"/>
+                                <field name="x_equivalent_size" widget="many2many_tags"/>
+                                <field name="x_alt_tire" widget="many2many_tags"/>
+                            </group>
+                        </div>
+                        <!--Partially Necessary Info - 1 End-->
+                        <!--Partially Necessary Info - 2 Start-->
+                        <div attrs="{'invisible': ['|',('categ_id','=',16),('categ_id','=',17)]}">
+                            <group class="col-6">
+                                <field name="x_sidewall"/>
+                                <field name="x_super_single"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_tire_position" widget="many2many_tags" attrs="{'invisible': [('categ_id','=',15),('categ_id','=',19),('categ_id','=',20),('categ_id','=',21),('categ_id','=',22),('categ_id','=',23)]}"/>
+                                <field name="x_compound"/>
+                                <field name="x_max_load"/>
+                            </group>
+                        </div>
+                        <!--Partially Necessary Info - 2 End-->
+                        <!--Tire Categories Technical Info Start-->
+                        <div attrs="{'invisible': [('categ_id','!=',65),('categ_id','!=',4),('categ_id','!=',5),('categ_id','!=',6),('categ_id','!=',7),('categ_id','!=',8),('categ_id','!=',9),('categ_id','!=',10),('categ_id','!=',11),('categ_id','!=',12),('categ_id','!=',13),('categ_id','!=',55),('categ_id','!=',56),('categ_id','!=',64)]}">
+                            <group class="col-6">
+                                <field name="x_pr"/>
+                                <field name="x_lr"/>
+                                <field name="x_star_rating"/>
+                                <field name="x_ms_r"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_max_dual_load"/>
+                                <field name="x_max_speed"/>
+                                <field name="x_li_ss" widget="many2many_tags"/>
+                                <field name="x_psi"/>
+                            </group>
+                        </div>
+                        <div attrs="{'invisible': [('categ_id','!=',65),('categ_id','!=',4),('categ_id','!=',5),('categ_id','!=',6),('categ_id','!=',7),('categ_id','!=',8),('categ_id','!=',9),('categ_id','!=',10),('categ_id','!=',11),('categ_id','!=',12),('categ_id','!=',13),('categ_id','!=',55),('categ_id','!=',56),('categ_id','!=',64)]}">
+                            <group class="col-6">
+                                <field name="x_tra" style="max-width:75px;" widget="many2many_tags"/>
+                                <field name="x_tt_tl"/>
+                                <field name="x_construction"/>
+                                <field name="x_twa"/>
+                                <field name="x_wheels_type"/>
+                                <field name="x_num_of_bolt_holes"/>
+                                <field name="x_bolt_pattern"/>
+                                <field name="x_offset_in"/>
+                                <field name="x_tweel_type"/>
+                                <field name="x_hub_color"/>
+                                <field name="x_center_hole_diameter_in"/>
+                                <field name="x_application_side"/>
+                                <field name="x_country_of_origin"/>
+                                <field name="x_m_c" style="max-width:75px;" widget="many2many_tags"/>
+                                <field name="x_m_m_l" style="max-width:75px;" widget="many2many_tags"/>
+                                <field name="x_product_application" style="max-width:75px;" string="Tire Application" widget="many2many_tags"/>
+                                <field name="x_marking"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_rim" widget="many2many_tags"/>
+                                <field name="x_tread_depth"/>
+                                <field name="x_od"/>
+                                <field name="x_ow"/>
+                                <field name="x_slr"/>
+                                <field name="x_rc"/>
+                                <field name="x_flat_plate_area"/>
+                                <field name="x_tmph_tkph"/>
+                            </group>
+                        </div>
+                        <!--Tires Category Technical Info End-->
+                        <!--Chain Categories Technical Info Start-->
+                        <div attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}">
+                            <group class="col-6">
+                                <field name="x_valve"/>
+                                <field name="x_link_pattern"/>
+                                <field name="x_mesh_pattern"/>
+                                <field name="x_chain_service"/>
+                                <field name="x_ring_gauge"/>
+                                <field name="x_ring_inner_dia"/>
+                                <field name="x_ring_outer_dia"/>
+                                <field name="x_link_length"/>
+                                <field name="x_link_width"/>
+                                <field name="x_link_height"/>
+                                <field name="x_mesh_diagonal"/>
+                                <field name="x_product_application" string="Chain Application" widget="many2many_tags"/>
+                                <field name="x_estimated_service_life"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_tool_kits"/>
+                                <field name="x_tools" widget="many2many_tags"/>
+                                <field name="x_country_of_origin"/>
+                                <field name="x_box_length"/>
+                                <field name="x_box_width"/>
+                                <field name="x_box_height"/>
+                                <field name="x_crate_l"/>
+                                <field name="x_crate_w"/>
+                                <field name="x_crate_h"/>
+                                <field name="x_unit_length_in"/>
+                                <field name="x_unit_width_in"/>
+                                <field name="x_unit_height_in"/>
+                                <field name="x_unit_weight_lb"/>
+                                <field name="x_unit_package"/>
+                                <field name="x_weight_package"/>
+                                <field name="x_pin_th" attrs="{'invisible': [('categ_id','!=',26)]}"/>
+                            </group>
+                        </div>
+                        <!--Chain Category Technical Info End-->
+                        <!--Track Categories Technical Info Start-->
+                        <div attrs="{'invisible': [('categ_id','!=',19),('categ_id','!=',20),('categ_id','!=',21),('categ_id','!=',22),('categ_id','!=',23)]}">
+                            <group class="col-6">
+                                <field name="x_ott"/>
+                                <field name="x_ott_tire_size" widget="many2many_tags"/>
+                                <field name="x_num_of_links"/>
+                                <field name="x_tread_pattern"/>
+                                <field name="x_num_of_tread_bars"/>
+                                <field name="x_product_application" string="Track Application" widget="many2many_tags"/>
+                                <field name="x_guiding_system"/>
+                                <field name="x_metal_piece_name"/>
+                                <field name="x_metal_piece_type"/>
+                                <field name="x_metal_piece_specification"/>
+                                <field name="x_wheel_spacer"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_track_width"/>
+                                <field name="x_pitch"/>
+                                <field name="x_length"/>
+                                <field name="x_carcass_thickness"/>
+                                <field name="x_tread_thickness"/>
+                                <field name="x_total_thickness"/>
+                                <field name="x_guide_drive_lugs"/>
+                                <field name="x_num_of_lugs"/>
+                                <field name="x_lug_height"/>
+                                <field name="x_main_cable_size"/>
+                            </group>
+                        </div>
+                        <!--Track Category Technical Info End-->
+                        <!--O-Ring L-Ring Categories Technical Info Start-->
+                        <div attrs="{'invisible': [('categ_id','!=',15)]}">
+                            <group class="col-6">
+                                <field name="x_common_fit" widget="many2many_tags"/>
+                                <field name="x_tt_tl"/>
+                                <field name="x_construction"/>
+                                <field name="x_product_application" String="O/L-Ring Application" widget="many2many_tags"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_rd"/>
+                                <field name="x_rod_d"/>
+                                <field name="x_oring_g_thick"/>
+                                <field name="x_unit_bag"/>
+                                <field name="x_unit_carton"/>
+                            </group>
+                        </div>
+                        <!--O-Ring L-Ring Technical Info End-->
+                        <!--Tire & Wheel Conditioners, Coolants & Sealants Categories Technical Info Start-->
+                        <div attrs="{'invisible': [('categ_id','!=',17)]}">
+                            <group class="col-6">
+                                <field name="x_product_application" string="Application" widget="many2many_tags"/>
+                                <field name="x_active_ingredient"/>
+                                <field name="x_appearance_odor"/>
+                                <field name="x_freezing_stability"/>
+                                <field name="x_physical_state"/>
+                                <field name="x_specific_gravity"/>
+                                <field name="x_special"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_container_type"/>
+                                <field name="x_volume"/>
+                                <field name="x_solubility"/>
+                                <field name="x_boiling_point"/>
+                                <field name="x_vapor_pressure"/>
+                                <field name="x_vapor_density"/>
+                            </group>
+                        </div>
+                        <!--Tire & Wheel Conditioners, Coolants & Sealants Technical Info End-->
+                        <!--Wheels Categories Technical Info Start-->
+                        <div attrs="{'invisible': [('categ_id','!=',18)]}">
+                            <group class="col-6">
+                                <field name="x_tt_tl"/>
+                                <field name="x_construction"/>
+                                <field name="x_product_application" string="Wheels Application" widget="many2many_tags" />
+                                <field name="x_application_side"/>
+                                <field name="x_wheels_type"/>
+                                <field name="x_valve"/>
+                                <field name="x_color"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_center_hole"/>
+                                <field name="x_num_of_bolt_holes"/>
+                                <field name="x_bolt_circle"/>
+                                <field name="x_backside_spacing"/>
+                            </group>
+                        </div>
+                        <!--Wheels Category Technical Info End-->
+                        <!--TPMS - Tire Pressure Monitoring System Categories Technical Info Start-->
+                        <div attrs="{'invisible': [('categ_id','!=',16)]}">
+                            <group class="col-6">
+                                <field name="x_alarm_set_up"/>
+                                <field name="x_pc_pressure_setup"/>
+                                <field name="x_internal_external"/>
+                                <field name="x_software"/>
+                            </group>
+                            <group class="col-6">
+                                <field name="x_num_of_sensors"/>
+                                <field name="x_data_logging"/>
+                                <field name="x_kit_contains"/>
+                            </group>
+                        </div>
+                        <!--TPMS - Tire Pressure Monitoring System Technical Info End-->
+                    </div>
+
+                    <!--Description Start-->
+                    <div class="row" style="margin-top:30px;">
+                        <div class="col-12" style="margin:1px;">
+                            <label for="x_product_woo_url" string="WOO Product URL" style="font-size: 12px;"/><br/>
+                            <field name="x_product_woo_url" widget="url"/><br/><br/>
+                            <label for="x_sb_product_url" string="SB Product URL" style="font-size: 12px;"/><br/>
+                            <field name="x_sb_product_url" widget="url"/><br/><br/>
+                            <label for="website_description" string="Description" style="font-size: 12px;"/><br/>
+                            <field name="website_description"/>
+                            <label for="x_note" string="Internal Notes" style="font-size: 12px;"/><br/>
+                            <field name="x_note" style="color:red"/>
+                        </div>
+                    </div>
+                    <!--Description End-->
+                </div>
+                <div class="col-5" style="border: 1px dotted #ADADAD;margin:0px;padding:0px;padding-top:15px;padding-bottom:15px;"> <!-- Can be Sold / Identity / Shipping -->
+                    <div class="col-12" name="options" groups="base.group_user" style="border-bottom: 1px solid #E5E5E5;"> <!-- Can be sold -->
+                        <div>
+                            <field name="sale_ok"/>
+                            <label for="sale_ok"/>
+                        </div>
+                        <div>
+                            <field name="purchase_ok"/>
+                            <label for="purchase_ok"/>
+                        </div>
+                        <div>
+                            <field name="can_be_expensed"/>
+                            <label for="can_be_expensed"/>
+                        </div>
+                        <div>
+                            <field name="x_avalara_synced"/>
+                            <label for="x_avalara_synced"/>
+                        </div>
+                        <div>
+                            <field name="x_purchase_history"/>
+                            <label for="x_purchase_history"/>
+                        </div>
+
+                    </div>
+                    <div class= "col-12" name="options" groups="base.group_user" style="padding: 15px; border-bottom: 1px solid #E5E5E5;">
+                        <div>
+                            <field name="x_web_upload"/>
+                            <label for="x_web_upload"/>
+                        </div>
+                        <group>
+                            <field name="x_web_status"/>
+                            <field name="x_marketplace_online" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </div>
+                    <div class= "col-12" style="padding: 15px; border-bottom: 1px solid #E5E5E5;"> <!-- PO Latest -->
+                        <group>
+                            <field name="x_purchase_order_latest"/>
+                            <field name="x_purchase_order_latest_update"/>
+                            <field name="x_purchase_order_latest_vendor"/>
+                            <field name="x_purchase_order_latest_cost" string="PO Latest Unit Cost" widget="monetary"/>
+                        </group>
+                    </div>
+                    <div class= "col-12" style="padding: 15px; border-bottom: 1px solid #E5E5E5;"> <!-- Condition -->
+                        <group>
+                            <field name="x_vendor_stock_updated" string="Vendor Updated"/>
+                            <field name="x_raw_total_vendor_stock"/>
+                            <field name="x_sum_vendor_stock" string="Adjusted Total Vendor Stock"/>
+                            <field name="x_vendor_note" attrs="{'invisible': [('x_vendor_note','=',False)]}"/>
+                        </group>
+                    </div>
+                    <div class= "col-12" style="padding: 15px; border-bottom: 1px solid #E5E5E5;"> <!-- Condition -->
+                        <group>
+                            <field name="x_warehouse_stock_percent" string="Warehouse Stock [%]"/>
+                            <field name="x_web_stock"/>
+                        </group>
+                    </div>
+                    <div class= "col-12" style="padding: 15px; border-bottom: 1px solid #E5E5E5;"> <!-- Condition -->
+                        <group>
+                            <field name="x_msrp" widget="monetary"/>
+                            <field name="x_web_price_mark_up_percentage" style="font-weight:bolder;color:red" string="Web MarkUp % (WOO)"/>
+                            <field name="x_web_price" style="font-weight:bolder;color:red" string= "Web Price (WOO)" widget="monetary"/>
+                            <field name="x_web_sale_price" widget="monetary"/>
+                            <field name="x_web_shipping_class"/>
+                        </group>
+                    </div>
+                    <div class= "col-12" style="padding: 15px; border-bottom: 1px solid #E5E5E5;"> <!-- Identification -->
+                        <group>
+                            <field name="type"/>
+                            <field name="barcode"/>
+                            <field name="x_upc_otrusa" string="UPC OTRUSA.COM"/>
+                            <field name="x_upc" string="UPC Manufacturer"/>
+                            <field name="x_sku"/>
+                            <field name="x_asin"/>
+                            <field name="x_unspsc_code"/>
+                            <field name="x_ean"/>
+                            <field name="x_isbn"/>
+                            <field name="x_dot"/>
+                        </group>
+                    </div>
+                    <div class= "col-12" style="padding: 15px; border-bottom: 1px solid #E5E5E5;"> <!-- Condition -->
+                        <group>
+                            <field name="x_condition"/>
+                            <field name="x_production"/>
+                        </group>
+                    </div>
+                    <div style="padding: 15px;"> <!-- Shipping -->
+                        <group>
+                            <field name="x_container_size"/>
+                            <field name="x_qty_container_size"/>
+                            <field name="hs_code"/>
+                            <field name="x_ship_by"/>
+                            <field name="x_sh_l_in" attrs="{'invisible': [('x_ship_by','=',False)]}"/>
+                            <field name="x_sh_wi_in" attrs="{'invisible': [('x_ship_by','=',False)]}"/>
+                            <field name="x_sh_h_in" attrs="{'invisible': [('x_ship_by','=',False)]}"/>
+                            <field name="x_tire_dimension" attrs="{'invisible': [('x_ship_by','=',False)]}"/>
+                            <field name="x_sh_v_ft3" attrs="{'invisible': [('x_ship_by','=',False)]}"/>
+                            <field name="x_sh_we_lb"/>
+                            <field name="x_freight_calc" invisible="1"/>
+                            <field name="x_freight_class"/>
+                        </group>
+                    </div>
+
+                </div>
+
+            </div>
+        </page>
+        <page string="Pricelist" invisible="1">
+            <div>
+                <field name="x_pricelist_item" mode="tree">
+                    <tree string="Pricelist Items" editable="top">
+                      <field name="pricelist_id"/>
+                      <field name="name" invisible="1"/>
+                      <field name="applied_on" invisible="1"/>
+                      <field name="product_tmpl_id" invisible="1"/>
+                      <field name="fixed_price" widget="monetary"/>
+                      <field name="price" invisible="1"/>
+                      <field name="min_quantity" optional="hide"/>
+                      <field name="date_start" optional="hide"/>
+                      <field name="date_end" optional="hide"/>
+                      <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                    </tree>
+                </field>
+            </div>
+        </page>
+        <page string="INTERNAL BACK-END ONLY" name="INTERNAL BACK-END ONLY">
+            <group>
+                <field name="x_new_tab"/>
+                <field name="x_service_type"/>
+                <field name="id"/>
+                <field name="x_odoo_external_id"/>
+                <field name="x_reg_price"/>
+                <field name="x_vendor_list_pick_price"/>
+                <field name="x_woo_id"/>
+                <field name="x_total_quantity"/>
+                <field name="x_total_available"/>
+                <field name="x_warehouse_info"/>
+                <field name="x_categ_name"/>
+                <field name="x_categ_main_name"/>
+                <field name="x_refresh"/>
+                <field name="x_odoo_only"/>
+                <field name="x_sb_product_id"/>
+                <field name="x_sb_id"/>
+                <field name="create_date"/>
+                <field name="write_date"/>
+                <field name="x_latest_list_price_updated" string="Last List Price Updated on"/>
+                <field name="x_sb_product_total_quantity"/>
+                <field name="x_sb_inventory_variations"/>
+                <field name="x_sb_product_total_quantity_date" string="SB Qty(s) Update Date" widget="date"/>
+                <field name="x_allow_back_order"/>
+                <field name="x_highest_stock_zip"/>
+                <field name="x_raw_unit_cost_source" invisible="1"/>
+
+
+
+
+
+
+
+            </group>
+        </page>
+        <page string="COST-PRICE Analysis" name="COST-PRICE Analysis">
+              <div class="col-5" style="border:1px solid black;">
+                <table class="text-center" style="width:100%;margin-top: 10px;margin-bottom: 10px;"> <!-- Cost Analysis -->
+                  <tr>
+                      <td colspan="3" style="background-color:#ADADAD;padding:3px;font-size:15px;font-weight:bold;">
+                          COST ANALYSIS (Raw Unit Cost)
+                          <br/>
+                          *Include all Confirmed PO regardless of Delivery status
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_avg_cost"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_min_cost"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_max_cost"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;">
+                          <field name="x_avg_cost" widget="monetary"/>
+                      </td>
+                      <td style="width:33%;">
+                          <field name="x_min_cost" widget="monetary"/>
+                      </td>
+                      <td style="width:33%;">
+                          <field name="x_max_cost" widget="monetary"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_last_cost"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_total_qty_purchase" string="Total Purchased"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;">
+                          <field name="x_last_cost" widget="monetary"/>
+                      </td>
+                      <td style="width:33%;">
+                          <field name="x_total_qty_purchase"/>
+                      </td>
+                      <td style="width:33%;">
+                      </td>
+                  </tr>
+                </table>
+                <table class="text-center" style="width:100%;margin-top: 10px;margin-bottom: 10px;"> <!-- Price Analysis -->
+                  <tr>
+                      <td colspan="3" style="background-color:#ADADAD;padding:3px;font-size:15px;font-weight:bold;">
+                          PRICE ANALYSIS
+                          <br/>
+                          *Include all Confirmed SO regardless of Delivery status
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_avg_price"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_min_price"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_max_price"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;">
+                          <field name="x_avg_price" widget="monetary"/>
+                      </td>
+                      <td style="width:33%;">
+                          <field name="x_min_price" widget="monetary"/>
+                      </td>
+                      <td style="width:33%;">
+                          <field name="x_max_price" widget="monetary"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_last_price"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                          <label for="x_total_qty_price" string="Total Sold"/>
+                      </td>
+                      <td style="width:33%;padding:10px;padding-bottom:3px;">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width:33%;">
+                          <field name="x_last_price" widget="monetary"/>
+                      </td>
+                      <td style="width:33%;">
+                          <field name="x_total_qty_price"/>
+                      </td>
+                      <td style="width:33%;">
+                      </td>
+                  </tr>
+                </table>
+            </div>
+        </page>
+
+        <!--page string="ATTACHMENT">
+            <field name="x_ir_attachment"  mode="kanban"
+              context="{'default_x_product_template': [(4,active_id)],
+              'default_res_id': active_id,
+              'default_res_model': 'product.template','form_view_ref' : 'studio_customization.x_ir_attachment_view_eba78f44-d1eb-4fa3-8320-a2ba3e3afe91',
+              'tree_view_ref' : 'studio_customization.x_ir_attachment_view_abc11e16-4d60-451e-877a-20736a311cee',
+              'kanban_view_ref' : 'studio_customization.x_ir_attachment_view_336d3b9c-e46d-45c7-b74d-ba623d6d7e10',}"/>
+
+        </page-->
+
+    </notebook>
+
+
+
+
+  </sheet>
+
+
+
+  <div class="oe_chatter"> <!-- Log note & activity -->
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="activity_ids" widget="mail_activity"/>
+          <field name="message_ids" widget="mail_thread"/>
+      </div>
+
+</form>
