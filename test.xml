@@ -588,7 +588,7 @@
                                 <br class="oe_edit_only"/>
                                 <button name="2433" style="width:100%;" type="action" class="btn-info oe_edit_only" string="BRAND" icon="fa-plus-circle" groups="base.group_system,__export__.res_groups_160_986a5939,__export__.res_groups_161_fe7d0abc"/>
                                 <field name="x_model" widget="text"/>
-                                <field name="x_manufacturer"/>
+                                <field name="x_manufacturer" attrs="{'invisible': [('categ_id','=',41)]}"/>
                             </group>
                             <group class="col-6">
                                 <field name="x_part_number" style="max-width:75px;word-wrap: break-word;"/>
@@ -600,12 +600,12 @@
                         </div>
                         <!--Necessary Info End-->
                         <!--Partially Necessary Info - 1 Start-->
-                        <div attrs="{'invisible': ['|',('categ_id','=',16),('categ_id','=',17)]}">
+                        <div>
                             <group>
-                                <field name="x_size"/>
-                                <field name="x_bias_radial"/>
-                                <field name="x_equivalent_size" widget="many2many_tags"/>
-                                <field name="x_alt_tire" widget="many2many_tags"/>
+                                <field name="x_size" attrs="{'invisible': [('categ_id','in',[16,17])]}"/>
+                                <field name="x_bias_radial" attrs="{'invisible': [('categ_id','in',[41,16,17])]}"/>
+                                <field name="x_equivalent_size" widget="many2many_tags" attrs="{'invisible': [('categ_id','in',[41,16,17])]}"/>
+                                <field name="x_alt_tire" widget="many2many_tags" attrs="{'invisible': [('categ_id','in',[41,16,17])]}"/>
                             </group>
                         </div>
                         <!--Partially Necessary Info - 1 End-->
