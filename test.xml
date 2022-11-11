@@ -610,7 +610,7 @@
                         </div>
                         <!--Partially Necessary Info - 1 End-->
                         <!--Partially Necessary Info - 2 Start-->
-                        <div attrs="{'invisible': ['|',('categ_id','=',16),('categ_id','=',17)]}">
+                        <div attrs="{'invisible': [('categ_id','in',[41,16,17])]}">
                             <group class="col-6">
                                 <field name="x_sidewall"/>
                                 <field name="x_super_single"/>
@@ -670,38 +670,38 @@
                         </div>
                         <!--Tires Category Technical Info End-->
                         <!--Chain Categories Technical Info Start-->
-                        <div attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}">
+                        <div>
                             <group class="col-6">
-                                <field name="x_valve"/>
-                                <field name="x_link_pattern"/>
-                                <field name="x_mesh_pattern"/>
-                                <field name="x_chain_service"/>
-                                <field name="x_ring_gauge"/>
-                                <field name="x_ring_inner_dia"/>
-                                <field name="x_ring_outer_dia"/>
-                                <field name="x_link_length"/>
-                                <field name="x_link_width"/>
-                                <field name="x_link_height"/>
-                                <field name="x_mesh_diagonal"/>
-                                <field name="x_product_application" string="Chain Application" widget="many2many_tags"/>
-                                <field name="x_estimated_service_life"/>
+                                <field name="x_valve" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_link_pattern" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_mesh_pattern" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_chain_service" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_ring_gauge" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_ring_inner_dia" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_ring_outer_dia" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_link_length" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_link_width" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_link_height" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_mesh_diagonal" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_product_application" string="Chain Application" widget="many2many_tags" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_estimated_service_life"  attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
                             </group>
                             <group class="col-6">
-                                <field name="x_tool_kits"/>
-                                <field name="x_tools" widget="many2many_tags"/>
-                                <field name="x_country_of_origin"/>
-                                <field name="x_box_length"/>
-                                <field name="x_box_width"/>
-                                <field name="x_box_height"/>
-                                <field name="x_crate_l"/>
-                                <field name="x_crate_w"/>
-                                <field name="x_crate_h"/>
-                                <field name="x_unit_length_in"/>
-                                <field name="x_unit_width_in"/>
-                                <field name="x_unit_height_in"/>
-                                <field name="x_unit_weight_lb"/>
-                                <field name="x_unit_package"/>
-                                <field name="x_weight_package"/>
+                                <field name="x_tool_kits" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_tools" widget="many2many_tags" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_country_of_origin" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_box_length" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57),('categ_id','!=',41)]}"/>
+                                <field name="x_box_width" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57),('categ_id','!=',41)]}"/>
+                                <field name="x_box_height" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57),('categ_id','!=',41)]}"/>
+                                <field name="x_crate_l" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_crate_w" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_crate_h" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_unit_length_in" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57),('categ_id','!=',41)]}"/>
+                                <field name="x_unit_width_in" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57),('categ_id','!=',41)]}"/>
+                                <field name="x_unit_height_in" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57),('categ_id','!=',41)]}"/>
+                                <field name="x_unit_weight_lb" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_unit_package" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
+                                <field name="x_weight_package" attrs="{'invisible': [('categ_id','!=',14),('categ_id','!=',15),('categ_id','!=',16),('categ_id','!=',17),('categ_id','!=',24),('categ_id','!=',25),('categ_id','!=',26),('categ_id','!=',27),('categ_id','!=',28),('categ_id','!=',32),('categ_id','!=',54),('categ_id','!=',57)]}"/>
                                 <field name="x_pin_th" attrs="{'invisible': [('categ_id','!=',26)]}"/>
                             </group>
                         </div>
@@ -774,21 +774,21 @@
                         </div>
                         <!--Tire & Wheel Conditioners, Coolants & Sealants Technical Info End-->
                         <!--Wheels Categories Technical Info Start-->
-                        <div attrs="{'invisible': [('categ_id','!=',18)]}">
+                        <div attrs="{'invisible': [('categ_id','!=',18),('categ_id','!=',41)]}">
                             <group class="col-6">
-                                <field name="x_tt_tl"/>
-                                <field name="x_construction"/>
-                                <field name="x_product_application" string="Wheels Application" widget="many2many_tags" />
-                                <field name="x_application_side"/>
-                                <field name="x_wheels_type"/>
-                                <field name="x_valve"/>
+                                <field name="x_tt_tl" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_construction" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_product_application" string="Wheels Application" widget="many2many_tags" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_application_side" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_wheels_type" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_valve" attrs="{'invisible': [('categ_id','!=',18)]}"/>
                                 <field name="x_color"/>
                             </group>
                             <group class="col-6">
-                                <field name="x_center_hole"/>
-                                <field name="x_num_of_bolt_holes"/>
-                                <field name="x_bolt_circle"/>
-                                <field name="x_backside_spacing"/>
+                                <field name="x_center_hole" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_num_of_bolt_holes" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_bolt_circle" attrs="{'invisible': [('categ_id','!=',18)]}"/>
+                                <field name="x_backside_spacing" attrs="{'invisible': [('categ_id','!=',18)]}"/>
                             </group>
                         </div>
                         <!--Wheels Category Technical Info End-->
