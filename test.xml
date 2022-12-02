@@ -587,6 +587,7 @@
                                 <field name="x_brand" options="{'no_create': True}"/>
                                 <br class="oe_edit_only"/>
                                 <button name="2433" style="width:100%;" type="action" class="btn-info oe_edit_only" string="BRAND" icon="fa-plus-circle" groups="base.group_system,__export__.res_groups_160_986a5939,__export__.res_groups_161_fe7d0abc"/>
+                                <field name="x_featured_brand" widget="text" attrs="{'invisible': [('categ_id','!=',41)]}"/>
                                 <field name="x_model" widget="text"/>
                                 <field name="x_manufacturer" attrs="{'invisible': [('categ_id','=',41)]}"/>
                             </group>
@@ -603,6 +604,7 @@
                         <div>
                             <group>
                                 <field name="x_size" attrs="{'invisible': [('categ_id','in',[16,17])]}"/>
+                                <field name="x_material" widget="text" attrs="{'invisible': [('categ_id','!=',41)]}"/>
                                 <field name="x_bias_radial" attrs="{'invisible': [('categ_id','in',[41,16,17])]}"/>
                                 <field name="x_equivalent_size" widget="many2many_tags" attrs="{'invisible': [('categ_id','in',[41,16,17])]}"/>
                                 <field name="x_alt_tire" widget="many2many_tags" attrs="{'invisible': [('categ_id','in',[41,16,17])]}"/>
